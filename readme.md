@@ -481,7 +481,7 @@ meer informatie. Je dient in je Linux omgeving te werken (Windows gebruikers in 
 1. Maak een package.json bestand aan door `touch package.json` te typen.
 1. Open `package.json` in een editor, en voeg de **#snippet-package-npm** toe. (save & exit)
 1. Maak een bestand gulpfile.js bestand aan door `touch gulpfile.js`te typen.
-1. Open `gulpfile.js` in een editor, en voeg de [deze JavaScript code](https://github.com/nrzonline/edwin_project/blob/master/gulpfile.js) toe aan het bestand. (save & exit)
+1. Open `gulpfile.js` in een editor, en voeg [deze JavaScript code](https://github.com/nrzonline/edwin_project/blob/master/gulpfile.js) toe aan het bestand. (save & exit)
 1. Navigeer in je Windows CMDer tab naar je Django project map, bijvoorbeeld `cd c:/users/projects/tutorial/tutorial_project/`
 1. Voer de npm installatie van de packages uit door `npm install` te typen, de packages worden geïnstalleerd. Done!
 
@@ -535,36 +535,90 @@ httpie==0.9.3
 ```
 
 ---
-# **Django Debug Toolbar**
+# **(Optioneel) Django Debug Toolbar**
 ---
 
 [Homepage](https://django-debug-toolbar.readthedocs.org/en/1.4/) - [Download](https://django-debug-toolbar.readthedocs.org/en/1.4/installation.html) - [Documentatie](https://django-debug-toolbar.readthedocs.org/en/1.4/)
 
 Met behulp van Django Debug Toolbar kan je een hoop debug-informatie verkrijgen, die het debuggen van je project vergemakkelijken.
 
-### Voorbereiding (Windows Vagrant/Linux)
+### Installeren / Activeren (Windows Vagrant/Linux)
 1. Zorg dat je in je Linux omgeving werkt, zie het kopje **Vagrant** voor meer informatie.
 1. Zorg dat je virtual environment is geactiveerd. Zie het kopje **Virtual Environment** voor meer informatie.
 1. Type `pip freeze` en kijk of `django-debug-toolbar==x.x.x` is geïnstalleerd.
 1. Is het nog niet geïntalleerd? Type dan `pip install django-debug-toolbar` om deze te installeren.
 1. Navigeer naar je project configuratie map, bijvoorbeeld `cd ~/tutorial_project/tutorial_project`
-1. Open het bestand `settings.py` met je editor.
+1. Open het bestand `settings.py` met een editor.
 1. Voeg `debug_toolbar` aan je `INSTALLED_APPS` toe (save & exit).
 
 ---
-# **Django Admin Bootstrapped**
---
+# **(Optioneel) Django Admin Bootstrapped**
+---
 
 [Homepage](http://django-admin-bootstrapped3.readthedocs.org/en/latest/) - [Download](http://django-admin-bootstrapped3.readthedocs.org/en/latest/#installation) - [Documentatie](http://django-admin-bootstrapped3.readthedocs.org/en/latest/#)
 
+### Installeren / Activeren (Windows Vagrant/Linux)
 1. Zorg dat je in je Linux omgeving werkt, zie het kopje **Vagrant** voor meer informatie.
 1. Zorg dat je virtual environment is geactiveerd. Zie het kopje **Virtual Environment** voor meer informatie.
 1. Type `pip freeze` en kijk of `django-admin-bootstrapped==x.x.x` is geïnstalleerd.
 1. Is het nog niet geïntalleerd? Type dan `pip install django-admin-bootstrapped` om deze te installeren.
 1. Navigeer naar je project configuratie map, bijvoorbeeld `cd ~/tutorial_project/tutorial_project`
-1. Open het bestand `settings.py` met je editor.
+1. Open het bestand `settings.py` met een editor.
 1. Voeg `django_admin_bootstrapped` aan je `INSTALLED_APPS` toe vóór `django.contrib.admin`!
 1. Voeg de volgende regel aan code ook toe aan je `settings.py` file (Maakt niet uit waar, zolang het niet in een LIST is!) (save & exit)
 ```
 DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'
 ```
+
+---
+# **Django Rest Framework**
+---
+
+Django-Rest-Framework bied de mogelijkheid om gemakkelijk en snel Web API's te schrijven.
+
+[Homepage](http://www.django-rest-framework.org/) - [Download](http://www.django-rest-framework.org/#installation) - [Documentatie](http://www.django-rest-framework.org/)
+
+### Installeren / Activeren (Windows Vagrant/Linux)
+1. Zorg dat je in je Linux omgeving werkt, zie het kopje **Vagrant** voor meer informatie.
+1. Zorg dat je virtual environment is geactiveerd. Zie het kopje **Virtual Environment** voor meer informatie.
+1. Type `pip freeze` en kijk of `django-rest-framework==x.x.x` is geïnstalleerd.
+1. Is het nog niet geïntalleerd? Type dan `pip install django-rest-framework` om deze te installeren.
+1. Navigeer naar je project configuratie map, bijvoorbeeld `cd ~/tutorial_project/tutorial_project`
+1. Open het bestand `settings.py` met een editor.
+1. Voeg `rest_framework` aan je `INSTALLED_APPS` toe.
+1. Voeg de volgende regel aan code ook toe aan je `settings.py` file (Maakt niet uit waar, zolang het niet in een LIST is!) (save & exit)
+1. Open het bestand `urls.py` met een editor.
+7. Voeg de onderstaande url-pattern toe aan de huidige url-patterns:
+```
+url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+```
+
+---
+# **(Optioneel) Django Crispy Forms**
+---
+
+Het snel genereren van formulieren in boostrap3 met Django Crispy Forms.
+
+[Homepage](http://django-crispy-forms.readthedocs.org/en/latest/) - [Download](http://django-crispy-forms.readthedocs.org/en/latest/install.html) - [Documentatie](http://django-crispy-forms.readthedocs.org/en/latest/)
+
+### Installeren / Activeren (Windows Vagrant/Linux)
+1. Zorg dat je in je Linux omgeving werkt, zie het kopje **Vagrant** voor meer informatie.
+1. Zorg dat je virtual environment is geactiveerd. Zie het kopje **Virtual Environment** voor meer informatie.
+1. Type `pip freeze` en kijk of `django-cripy-forms==x.x.x` is geïnstalleerd.
+1. Is het nog niet geïntalleerd? Type dan `pip install django-crispy-forms` om deze te installeren.
+1. Navigeer naar je project configuratie map, bijvoorbeeld `cd ~/tutorial_project/tutorial_project`
+1. Open het bestand `settings.py` met een editor.
+1. Voeg `crispy_forms` aan je `INSTALLED_APPS` toe.
+1. Voeg ook `CRISPY_TEMPLATE_PACK = 'uni_form'` toe aan je `settings.py`. (maakt niet uit waar, zolang het maar niet in een LIST is!) (save & exit)
+
+
+---
+# **TUTORIALS!**
+---
+
+Je hebt je werkende omgeving opgezet, en kunt online tutorials gaan volgen! Succes!
+
+1. [Try Django 1.9](https://www.youtube.com/watch?v=yfgsklK_yFo) 1 t/m 38
+1. [Try Django 1.8](https://www.youtube.com/watch?v=KsLHt3D_jsE&list=PLEsfXFp6DpzRcd-q4vR5qAgOZUuz8041S) Oplijsten!
+1. [Django Rest Framework](http://www.django-rest-framework.org/tutorial/1-serialization/) 1, 2, 4, 5 6
+1. [AngularJS]() Zoeken!

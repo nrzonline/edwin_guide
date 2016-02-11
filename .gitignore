@@ -7,5 +7,6 @@ __pycache__
 .vagrant
 node_modules
 static/vendor
+virtual_cdn
 
 db.sqlite3
