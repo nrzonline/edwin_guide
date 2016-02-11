@@ -613,6 +613,19 @@ Het snel genereren van formulieren in boostrap3 met Django Crispy Forms.
 
 
 ---
+# **(Optioneel) Django Bootstrap3**
+---
+
+Het snel generern van Boostrap objecten in je Django Templates.
+
+[Homepage](https://django-bootstrap3.readthedocs.org/en/latest/index.html) - [Download](https://django-bootstrap3.readthedocs.org/en/latest/installation.html) - [Documentatie](https://django-bootstrap3.readthedocs.org/en/latest/index.html)
+
+1. Zorg dat je in je Linux omgeving werkt, zie het kopje **Vagrant** voor meer informatie.
+1. Zorg dat je virtual environment is geactiveerd. Zie het kopje **Virtual Environment** voor meer informatie.
+1. Type `pip freeze` en kijk of `django-bootstrap3==x.x.x` is geïnstalleerd.
+1. Is het nog niet geïntalleerd? Type dan `pip install django-bootstrap3` om deze te installeren.
+
+---
 # **TUTORIALS!**
 ---
 
