@@ -1,4 +1,4 @@
-# # [Lees of bewerk deze guide op GitHub](https://github.com/nrzonline/edwin_project)
+# # [Lees of bewerk deze guide op GitHub](https://github.com/nrzonline/edwin_guide)
 ---
     #                                                               #
     ################### INSTALLATIE BENODIGDHEDEN ###################
