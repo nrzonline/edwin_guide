@@ -1,0 +1,11 @@
+*.pyc
+*.orig
+.fuse_hidden*
+
+.git
+__pycache__
+.vagrant
+node_modules
+static/vendor
+
+db.sqlite3

@@ -1,0 +1,20 @@
+{
+    "name": "timeline-gulp",
+    "version": "0.0.1",
+    "description": "List of Gulp dependencies.",
+    "author": "Sem Verbraak",
+    "dependencies": {
+        "gulp": "*",
+        "gulp-coffee": "*",
+        "gulp-minify-css": "*",
+        "gulp-haml": "*",
+        "gulp-minify-html": "*",
+        "gulp-livereload": "*",
+        "gulp-notify": "*",
+        "gulp-newer": "*",
+        "gulp-plumber": "*",
+        "gulp-ruby-sass": "*",
+        "gulp-sass": "*"
+    },
+    "main": "gulpfile.js"
+}
