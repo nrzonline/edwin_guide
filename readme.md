@@ -1,4 +1,4 @@
-# # [Lees of bewerk deze guide op GitHub](https://github.com/nrzonline/training/blob/master/tutorial.md)
+# # [Lees of bewerk deze guide op GitHub](https://github.com/nrzonline/edwin_project)
 ---
     #                                                               #
     ################### INSTALLATIE BENODIGDHEDEN ###################
@@ -481,7 +481,7 @@ meer informatie. Je dient in je Linux omgeving te werken (Windows gebruikers in 
 1. Maak een package.json bestand aan door `touch package.json` te typen.
 1. Open `package.json` in een editor, en voeg de **#snippet-package-npm** toe. (save & exit)
 1. Maak een bestand gulpfile.js bestand aan door `touch gulpfile.js`te typen.
-1. Open `gulpfile.js` in een editor, en voeg de **#snippet-gulpfile-js** toe. Deze kan je onderaan de tutorial vinden. (save & exit)
+1. Open `gulpfile.js` in een editor, en voeg de [deze JavaScript code](https://github.com/nrzonline/edwin_project/blob/master/gulpfile.js) toe aan het bestand. (save & exit)
 1. Navigeer in je Windows CMDer tab naar je Django project map, bijvoorbeeld `cd c:/users/projects/tutorial/tutorial_project/`
 1. Voer de npm installatie van de packages uit door `npm install` te typen, de packages worden geïnstalleerd. Done!
 
@@ -512,6 +512,7 @@ meer informatie. Je dient in je Linux omgeving te werken (Windows gebruikers in 
 ---
 # **Python Packages installeren met pip**
 ---
+
 Om de geadviseerde opzet te realiseren, heb je een aantal Python / Django packages nodig. Deze gaan we eenvoudig
 installeren met de pip installer met behulp van een requirements.txt bestand. Je dient in je linux omgeving te werken
 (Windows gebruikers in Vagrant).
@@ -523,145 +524,47 @@ installeren met de pip installer met behulp van een requirements.txt bestand. Je
 
 #### #snippet-package-npm
 ```
-Django==1.9.1
 django-admin-bootstrapped==2.5.6
 django-bootstrap3==6.2.2
 django-bower==5.0.4
 django-crispy-forms==1.6.0
 django-debug-toolbar==1.4
 django-livereload==1.5
-httpie==0.9.3
 djangorestframework==3.3.0
+httpie==0.9.3
 ```
 
-#### **#snippet-gulpfile-js**
+---
+# **Django Debug Toolbar**
+---
+
+[Homepage](https://django-debug-toolbar.readthedocs.org/en/1.4/) - [Download](https://django-debug-toolbar.readthedocs.org/en/1.4/installation.html) - [Documentatie](https://django-debug-toolbar.readthedocs.org/en/1.4/)
+
+Met behulp van Django Debug Toolbar kan je een hoop debug-informatie verkrijgen, die het debuggen van je project vergemakkelijken.
+
+### Voorbereiding (Windows Vagrant/Linux)
+1. Zorg dat je in je Linux omgeving werkt, zie het kopje **Vagrant** voor meer informatie.
+1. Zorg dat je virtual environment is geactiveerd. Zie het kopje **Virtual Environment** voor meer informatie.
+1. Type `pip freeze` en kijk of `django-debug-toolbar==x.x.x` is geïnstalleerd.
+1. Is het nog niet geïntalleerd? Type dan `pip install django-debug-toolbar` om deze te installeren.
+1. Navigeer naar je project configuratie map, bijvoorbeeld `cd ~/tutorial_project/tutorial_project`
+1. Open het bestand `settings.py` met je editor.
+1. Voeg `debug_toolbar` aan je `INSTALLED_APPS` toe (save & exit).
+
+---
+# **Django Admin Bootstrapped**
+--
+
+[Homepage](http://django-admin-bootstrapped3.readthedocs.org/en/latest/) - [Download](http://django-admin-bootstrapped3.readthedocs.org/en/latest/#installation) - [Documentatie](http://django-admin-bootstrapped3.readthedocs.org/en/latest/#)
+
+1. Zorg dat je in je Linux omgeving werkt, zie het kopje **Vagrant** voor meer informatie.
+1. Zorg dat je virtual environment is geactiveerd. Zie het kopje **Virtual Environment** voor meer informatie.
+1. Type `pip freeze` en kijk of `django-admin-bootstrapped==x.x.x` is geïnstalleerd.
+1. Is het nog niet geïntalleerd? Type dan `pip install django-admin-bootstrapped` om deze te installeren.
+1. Navigeer naar je project configuratie map, bijvoorbeeld `cd ~/tutorial_project/tutorial_project`
+1. Open het bestand `settings.py` met je editor.
+1. Voeg `django_admin_bootstrapped` aan je `INSTALLED_APPS` toe vóór `django.contrib.admin`!
+1. Voeg de volgende regel aan code ook toe aan je `settings.py` file (Maakt niet uit waar, zolang het niet in een LIST is!) (save & exit)
 ```
-var gulp		= require('gulp'),
-	coffee		= require('gulp-coffee'),
-	sass		= require('gulp-sass'),
-	minifycss	= require('gulp-minify-css'),
-	haml		= require('gulp-haml'),
-	minifyhtml	= require('gulp-minify-html'),
-	livereload	= require('gulp-livereload'),
-	fs			= require("fs"),
-	plumber 	= require('gulp-plumber');
-
-var paths = {
-	'sassDirs'			: [],
-	'hamlDirs'			: [],
-	'coffeescriptDirs'	: []
-};
-
-var dive = function (dir, action) {
-	if (typeof action !== "function")
-		action = function (error, file) { };
-	fs.readdir(dir, function (err, list) {
-	if (err)
-		return action(err);
-	list.forEach(function (file) {
-			var path = dir + "/" + file;
-			fs.stat(path, function (err, stat) {
-				if (stat && stat.isDirectory()) {
-					dive(path, action);
-					action(path);
-				}
-			});
-		});
-	});
-};
-
-var checkDirName = function(path) {
-	var dirName = path.substring(path.lastIndexOf('/'), path.length);
-	path = path.substring(2);
-	if(dirName == '/sass') {
-		paths.sassDirs.push(path + '/**/*.sass');
-	} else if (dirName == '/haml') {
-		paths.hamlDirs.push(path + '/**/*.haml');
-	} else if (dirName == '/coffee') {
-		paths.coffeescriptDirs.push(path + '/**/*.coffee');
-	}
-}
-
-var getDestination = function(path, oldExtension, newExtension) {
-	/* "/" in linux env, "\\" in windows */
-	return path.substring(0, path.lastIndexOf("\\")).replace(oldExtension, newExtension)
-}
-
-gulp.task('analyseDirs', function() {
-	dive('.', checkDirName);
-});
-
-function watchCoffee() {
-	gulp.watch(paths.coffeescriptDirs, {base: './', emitOnGlob: false}, function(files) {
-		console.log("Syncing \x1b[33mCoffeeScript\x1b[0m file: \x1b[90m" + files.path + "\x1b[0m")
-		console.log("Destination: " + getDestination(files.path, 'coffee', 'js'))
-		return gulp.src(files.path)
-			.pipe(coffee())
-			.on('error', function (err) {
-					console.log(err);
-					this.emit('end');
-			})
-			.pipe(gulp.dest(getDestination(files.path, 'coffee', 'js')))
-			.pipe(livereload());
-	});
-}
-
-function watchSass() {
-	gulp.watch(paths.sassDirs, function(files) {
-		console.log("Syncing \x1b[35mSASS\x1b[0m file: \x1b[90m" + files.path + "\x1b[0m")
-		return gulp.src(files.path)
-			.pipe(sass({
-					indentedSyntax : true,
-					errLogToConsole: true
-			}))
-			.pipe(minifycss())
-			.on('error', function (err) {
-					console.log(err);
-					this.emit('end');
-			})
-			.pipe(gulp.dest(getDestination(files.path, 'sass', 'css')))
-			.pipe(livereload());
-	});
-}
-
-function watchHaml() {
-	gulp.watch(paths.hamlDirs, {base: './', emitOnGlob: false}, function(files) {
-		console.log("Syncing \x1b[97mHAML\x1b[0m file: \x1b[90m" + files.path + "\x1b[0m")
-		return gulp.src(files.path)
-			.pipe(haml())
-			.on('error', function (err) {
-					console.log(err);
-					this.emit('end');
-			})
-			.pipe(minifyhtml())
-			.pipe(gulp.dest(getDestination(files.path, 'haml', '')))
-			.pipe(livereload());
-	});
-}
-
-function watchPython() {
-	gulp.watch('**/*.py', {emitOnGlob: false},  function(files) {
-		setTimeout(function(){
-			console.log("Triggering livereload: \x1b[35m" + files.path + "\x1b[0m")
-			return gulp.src(files.path)
-				.pipe(livereload());
-		},1000);
-	});
-}
-
-gulp.task('startLiveReload', function() {
-	console.log('\x1b[92mStarting LiveReload\x1b[0m')
-	livereload.listen();
-});
-
-gulp.task('watch',['analyseDirs', 'startLiveReload'], function() {
-	setTimeout(function(){
-		watchSass();
-		watchCoffee();
-		watchPython();
-		watchHaml();
-    }, 1000);
-});
-
-gulp.task('default',['watch'])
+DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'
 ```

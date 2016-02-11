@@ -1,4 +1,4 @@
-Django==1.9.1
+Django==1.9.2
 django-admin-bootstrapped==2.5.6
 django-bootstrap3==6.2.2
 django-bower==5.0.4
