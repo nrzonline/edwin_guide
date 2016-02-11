@@ -41,7 +41,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'crispy_forms',
-    'django-bootstrap3',
+    'bootstrap3',
 ]
 
 if DEBUG:

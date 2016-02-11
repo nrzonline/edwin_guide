@@ -317,7 +317,7 @@ hun Vagrant omgeving. Virtual Environment wordt lokaal in Unix geïnstalleerd (s
 * **Windows (Vagrant/Linux)**:
     1. Creëer je nieuwe virtual environment door `virtualenv venv_tutorial` te typen.
     1. Navigeer naar je vagrant directory door `cd ~` te typen.
-    1. Chown je virtual environment map door `sudo chown vagrant:vagrant tutorial/ -R` te typen.
+    1. Chown je virtual environment map door `sudo chown vagrant:vagrant venv_tutorial/ -R` te typen.
     1. Activeer je virtual environment door `source venv_tutorial/bin/activate` te typen.
 * **Linux**:
     1. Write?!
@@ -328,7 +328,7 @@ hun Vagrant omgeving. Virtual Environment wordt lokaal in Unix geïnstalleerd (s
 
 Python package installer en manager.
 
-[Homepage]https://pip.pypa.io/en/stable/) - [Documentatie](https://pip.pypa.io/en/stable/reference/)
+[Homepage](https://pip.pypa.io/en/stable/) - [Documentatie](https://pip.pypa.io/en/stable/reference/)
 
 ### Installatie
 * **Windows (Vagrant/Linux)**:
@@ -616,7 +616,7 @@ Het snel genereren van formulieren in boostrap3 met Django Crispy Forms.
 # **(Optioneel) Django Bootstrap3**
 ---
 
-Het snel generern van Boostrap objecten in je Django Templates.
+Het snel genereren van Boostrap objecten in je Django Templates.
 
 [Homepage](https://django-bootstrap3.readthedocs.org/en/latest/index.html) - [Download](https://django-bootstrap3.readthedocs.org/en/latest/installation.html) - [Documentatie](https://django-bootstrap3.readthedocs.org/en/latest/index.html)
 
@@ -624,6 +624,9 @@ Het snel generern van Boostrap objecten in je Django Templates.
 1. Zorg dat je virtual environment is geactiveerd. Zie het kopje **Virtual Environment** voor meer informatie.
 1. Type `pip freeze` en kijk of `django-bootstrap3==x.x.x` is geïnstalleerd.
 1. Is het nog niet geïntalleerd? Type dan `pip install django-bootstrap3` om deze te installeren.
+1. Navigeer naar je project configuratie map, bijvoorbeeld `cd ~/tutorial_project/tutorial_project`
+1. Open het bestand `settings.py` met een editor.
+1. Voeg `bootstrap3` aan je `INSTALLED_APPS` toe.
 
 ---
 # **TUTORIALS!**
