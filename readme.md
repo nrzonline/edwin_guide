@@ -535,6 +535,27 @@ httpie==0.9.3
 ```
 
 ---
+# **Live Reload**
+---
+
+Live reload heb zul je met bij het gebruik van deze 'setup' nodig hebben. Sass, CoffeeScript en andere onderdelen moeten na het
+opslaan van aanpassingen opnieuw gecompiled worden. Gebeurt dit niet, zullen je aanpassingen niet werken. Live reload zal er voor
+zorgen dat je aanpassingen opnieuw worden gecompiled.
+
+### Voorbereiding
+1. Zorg dat je de `LiveReload` plug-in hebt geïnstalleerd in je Chrome browser. Zie kopje **Chrome** voor meer informate.
+1. Zorg dat je `NodeJS` en `npm` lokaal hebt geïnstalleerd. Zie kopje **NodeJS en npm** voor meer informatie.
+1. Zorg dat je de gulp dependencies in je project hebt geïnstalleerd. Zie kopje **Node Packages installeren met npm**
+1. Zorg dat je `gulpfile.js` aan je project hebt toegevoegd. Zie kopje **NodeJS en npm**
+
+### Live Reload Server starten
+1. Start een nieuwe CMD tab in je Linux omgeving (Windows gebruikers in Vagrant)
+1. Navigeer naar je Django Projectmap, bijvoorbeeld `cd ~/tutorial_project/`
+1. Om de Live Reload server te starten, type `gulp`, en de LiveReload server zal gaan draaien.
+1. Start (indien je dat nog niet hebt gedaan) in een andere tab je testserver door `python manage.py runserver 0.0.0.0:8000` te typen.
+1. Navigeer in Chrome naar `localhost:8000`, en kijk of Live Reload is geactiveerd in je browser: *(LiveReload is connected)*.
+1. Voila, je je bent nu in staat om je LiveReload server te starten en te gebruiken.
+
 # **(Optioneel) Django Debug Toolbar**
 ---
 
